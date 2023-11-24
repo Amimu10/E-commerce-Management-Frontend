@@ -1,0 +1,51 @@
+[
+    {
+      "id": 1,
+      "name": "Sophia Turner",
+      "role": "Tech Enthusiast",
+      "image": "https://source.unsplash.com/600x400/?woman,tech",
+      "quote": "Shopping at TechBuddy has been a fantastic experience. The range of tech products, from the latest gadgets to quality accessories, is impressive. I appreciate the user-friendly website and excellent customer service!",
+      "stars": 4.8
+    },
+    {
+      "id": 2,
+      "name": "Alex Martinez",
+      "role": "Satisfied Customer",
+      "image": "https://source.unsplash.com/600x400/?man,tech",
+      "quote": "TechBuddy has become my go-to destination for all things tech. The seamless navigation, detailed product information, and timely deliveries make it a top choice. Highly recommended for tech enthusiasts!",
+      "stars": 4.9
+    },
+    {
+      "id": 3,
+      "name": "Emily White",
+      "role": "Happy Shopper",
+      "image": "https://source.unsplash.com/600x400/?woman,laptop",
+      "quote": "I recently purchased a laptop from TechBuddy, and I couldn't be happier. The product quality, competitive pricing, and swift delivery exceeded my expectations. TechBuddy truly delivers on its promise!",
+      "stars": 5
+    },
+    {
+      "id": 4,
+      "name": "Nathan Johnson",
+      "role": "Gadget Geek",
+      "image": "https://source.unsplash.com/600x400/?man,gadget",
+      "quote": "TechBuddy's collection of gadgets is a tech lover's paradise. The variety and quality of products available, coupled with a hassle-free shopping experience, make it a standout in the tech market.",
+      "stars": 4.7
+    },
+    {
+      "id": 5,
+      "name": "Olivia Davis",
+      "role": "Tech Explorer",
+      "image": "https://source.unsplash.com/600x400/?woman,smartphone",
+      "quote": "Exploring the smartphone options at TechBuddy was a delightful experience. The detailed product descriptions and helpful reviews guided my purchase decision. TechBuddy is my trusted source for tech upgrades!",
+      "stars": 4.8
+    },
+    {
+      "id": 6,
+      "name": "Lucas Miller",
+      "role": "Happy Tech User",
+      "image": "https://source.unsplash.com/600x400/?man,earphones",
+      "quote": "TechBuddy delivered on its promise of quality when I purchased earphones. The sound clarity and comfort exceeded my expectations. It's a pleasure shopping for tech products with TechBuddy!",
+      "stars": 4.6
+    }
+  ]
+  

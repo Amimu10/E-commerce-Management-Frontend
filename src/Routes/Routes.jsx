@@ -6,6 +6,7 @@ import Services from "../Pages/Services/Services";
 import Login from "../Pages/Login.jsx/LOgin";
 import Register from "../Pages/Register/Register";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import CreateShop from "../Pages/CreateShop/CreateShop";
 
        export  const router = createBrowserRouter([
             {
@@ -15,7 +16,11 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
               children: [
                 {
                     path: "/",
-                    element: <Home></Home>
+                    element: <Home></Home>   
+                },  
+                {
+                    path: "/createShop",
+                    element: <CreateShop></CreateShop>
                 },
                 {
                     path: "/products",

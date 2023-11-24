@@ -62,6 +62,11 @@ function Navbar() {
         </NavLink>
       </li>
       <li>
+        <NavLink className="" to="/createShop">
+          CREATE SHOP
+        </NavLink>
+      </li>
+      <li>
         <NavLink className="" to="/products">
           PRODUCTS
         </NavLink>

@@ -7,22 +7,27 @@ import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import SectionTitle from "../../../../Components/SEctionTitle";
 import AddProduct from "./AddProduct";
+import { FaHome } from "react-icons/fa";
 
 const ShopManangementDashBoard = () => {
   const [currentPage, setCurrentPage] = useState("dashboard");
 
   const renderPage = () => {
-    switch (currentPage) {
+    switch (currentPage) { 
      case "managementHome": 
-      return <SectionTitle heading="Shop Manager DashBoard" subHeading="Welcome" />; 
+      return <SectionTitle  
+      heading="Shop Manager DashBoard"  
+      subHeading="Welcome" />; 
       case "addProduct": 
       return <AddProduct></AddProduct>; 
       case "productManagement":
         return <ProductManagement />;
       case "sellsCollection":
         return <SellsCollection />;
-      default:
-        return <div></div>;
+        default : 
+        return <SectionTitle  
+        heading="Shop Manager DashBoard"  
+        subHeading="Welcome" />; 
     }
   };
   return (
@@ -48,10 +53,14 @@ const ShopManangementDashBoard = () => {
             ></label>
             <ul className="menu p-4 lg:mt-8 min-h-screen text-white bg-orange-700 font-inter text-base">
               {/* Sidebar content here */} 
+              <Link to="/">
+                <FaHome className="text-4xl text-blue-700  hover:scale-110 duration-300" />
+                <p className="text-[20px] font-cinzel font-semibold text-white mb-6">Back To Home</p>
+              </Link> 
               <li>
                 <Link 
                  onClick={() => setCurrentPage("managementHome")}
-                to="/dashboard">  
+                to="/dashboard/managementHome">  
                     Management Home 
                 </Link>
               </li>

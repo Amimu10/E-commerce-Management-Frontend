@@ -13,6 +13,12 @@ import ProductManagement from "../Pages/DashBoard/ShopManager/ProductManagement/
 import SellsCollection from "../Pages/DashBoard/SellsCollection/SellsCollection";
 import ShopManangementDashBoard from "../Pages/DashBoard/ShopManager/ProductManagement/ShopManangementDashBoard";
 import { MdAddHome } from "react-icons/md";
+import ManageShop from "../Pages/DashBoard/AdminDashBoard/ManageShop";
+import AdminDashBoard from "../Pages/DashBoard/AdminDashBoard/AdminDashBoard";
+import SellSummary from "../Pages/DashBoard/AdminDashBoard/SellSummary";
+import AllUsers from "../Pages/DashBoard/AdminDashBoard/AllUsers";
+import AdminRoute from "../AdminRoute/AdminRoute";
+import PrivateRoute from "../../src/PrivateRoute/PrivateRoute";
 
 
 export const router = createBrowserRouter([
@@ -63,7 +69,7 @@ export const router = createBrowserRouter([
   // },
   {
     path: "dashboard",
-    element: <Dashboard></Dashboard>,
+    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     // errorElement: <ErrorPage></ErrorPage>,      
     children: [
       {
@@ -84,6 +90,28 @@ export const router = createBrowserRouter([
       {
         path: "sellsCollection",  
         element: <SellsCollection></SellsCollection>
+        
+      },
+
+      // system admin routes
+      {
+        path: "adminHome",    
+        element: <AdminRoute><AdminDashBoard></AdminDashBoard></AdminRoute> 
+        
+      },
+      {
+        path: "manageShop",     
+        element: <AdminRoute><ManageShop></ManageShop></AdminRoute>  
+        
+      },  
+      { 
+        path: "sellSummary",     
+        element: <AdminRoute><SellSummary></SellSummary></AdminRoute>  
+        
+      }, 
+      {
+        path: "allUsers",    
+        element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
         
       },
     ],

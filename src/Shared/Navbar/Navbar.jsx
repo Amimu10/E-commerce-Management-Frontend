@@ -67,6 +67,11 @@ function Navbar() {
         </NavLink>
       </li>
       <li>
+        <NavLink className="" to="/watchDemo">
+          WATCH DEMO
+        </NavLink>
+      </li>
+      <li>
         <NavLink className="" to="/products">
           PRODUCTS
         </NavLink>
@@ -96,7 +101,7 @@ function Navbar() {
         </NavLink>
       </li>
       <li>
-        <NavLink className="" to="/selling">
+        <NavLink className="" to="/dashboard">
           Dashboard
         </NavLink>
       </li>

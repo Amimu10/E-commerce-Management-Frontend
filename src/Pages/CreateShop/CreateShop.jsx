@@ -28,10 +28,12 @@ const CreateShop = () => {
              const shop = {  
                  name: data.name, 
                  logo: res.data.data.display_url,
-                 location: data.location,  
+                 location: data.location, 
+                 info: data.info, 
                  owner_email: data.email,
                  owner_name: data.owner_name,
-                 image: res.data.data.display_url   
+                 image: res.data.data.display_url
+                 
              } 
             //  
             const shopRes = await axiosPublic.post("/shops", shop); 
@@ -115,7 +117,7 @@ const CreateShop = () => {
             <label className="label">
               <span className="label-text">Shop Info</span>
             </label> 
-            <textarea {...register("recipe", { required: true})} 
+            <textarea {...register("info", { required: true})} 
               className="textarea textarea-bordered h-24"
               placeholder="Shop Description*" 
             ></textarea> 
@@ -126,7 +128,7 @@ const CreateShop = () => {
           </label>
             <input {...register("image", { required: true})} 
               type="file"
-              className="file-input file-input-bordered w-full max-w-xs my-6 "
+              className="file-input file-input-bordered w-full max-w-xs mb-6 "
             />
           </div>
           <button 

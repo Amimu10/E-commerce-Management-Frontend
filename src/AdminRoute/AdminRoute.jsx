@@ -9,8 +9,8 @@ const AdminRoute = ({children}) => {
     const {user, loading} = useAuth(); 
     const [isAdmin, isAdminLoading] = useAdmin(); 
     const location = useLocation(); 
-    if(loading || isAdminLoading){ 
-        return <Lottie animationData={Loader} />
+    if(loading || isAdminLoading){  
+        return <Lottie animationData={Loader} /> 
      } 
      if(user && isAdmin) { 
          return children;    

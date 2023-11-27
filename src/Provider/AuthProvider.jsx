@@ -2,7 +2,8 @@ import { createContext, useEffect, useState } from "react";
 
 export const AuthContext = createContext(null);
 import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import app from "../Firebase/firebase.config";
+// import app from "../Firebase/firebase.config";
+import app from "../Firebase/firebase.config"
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 const auth = getAuth (app); 
 
@@ -42,6 +43,7 @@ const updateUserProfile = (name, photo) => {
 
 useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, currentUser => { 
+        // setLoading(false); 
         setUser(currentUser);
         if(currentUser){
             const userInfo = {

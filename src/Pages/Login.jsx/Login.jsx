@@ -8,15 +8,19 @@ import {
   // LoadCanvasTemplateNoReload,
   validateCaptcha,
 } from "react-simple-captcha";
-import { useEffect, useState } from "react";
+// import { createContext, useEffect, useState } from "react";
 // import { AuthContext } from "../../Providers/AuthProvider";
 import { Helmet } from "react-helmet-async";
 import { toast } from "react-hot-toast";
 import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
+// import useAuth from "../../Hooks/useAuth";
+// import { AuthContext } from "../../Provider/AuthProvider";
 import useAuth from "../../Hooks/useAuth";
+import { useEffect, useState } from "react";
+// import useAuth from "../../Hooks/useAuth";
 
 const Login = () => {
-  const { signInUser } = useAuth;
+  const { signInUser } = useAuth(); 
   // const captchaRef = useRef(null);
   const [disabled, setDisabled] = useState(true);
   const navigate = useNavigate(); 
@@ -91,7 +95,7 @@ const from = location.state?.form?.pathname || "/";
                   </p>
                 </div>
                 <TEInput
-                  type="email"
+                  type="text"
                   name="email"
                   label="Email address"
                   size="lg"

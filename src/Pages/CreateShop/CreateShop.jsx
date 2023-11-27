@@ -5,14 +5,16 @@ import useAuth from "../../Hooks/useAuth";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { Helmet } from "react-helmet-async";
 import SectionTitle from "../../Components/SEctionTitle";
+import useAxiosSecure from "../../Hooks/UseAxiosSecure";
+// import useAxiosSecure from "../../Hooks/useAxiosSecure";
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`; 
 
 const CreateShop = () => { 
     const { register, handleSubmit } = useForm();    
     const {user} = useAuth();   
-    const axiosPublic = useAxiosPublic();  
-
+   const  axiosSecure = useAxiosSecure();  
+   const  axiosPublic = useAxiosPublic();
     const onSubmit = async (data) => {
         console.log(data); 
     
@@ -27,16 +29,17 @@ const CreateShop = () => {
             // now send the menu item to the server with the image url
              const shop = {  
                  name: data.name, 
-                 logo: res.data.data.display_url,
-                 location: data.location, 
+                 logo: res.data.data.display_url,   
+                 location: data.location,    
                  info: data.info, 
                  owner_email: data.email,
                  owner_name: data.owner_name,
-                 image: res.data.data.display_url
+                //  product_limit: data.product_limit,
+                 image: res.data.data.display_url 
                  
              } 
             //  
-            const shopRes = await axiosPublic.post("/shops", shop); 
+            const shopRes = await axiosSecure.post("/shops", shop); 
             console.log(shopRes.data); 
             if(shopRes.data.insertedId){  
               toast.success(`${data.name} is added successfully!`, { duration: 3000 }); 

@@ -8,18 +8,11 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
-// import Button from '@mui/material/Button';
 import Tooltip from "@mui/material/Tooltip";
-// import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from "@mui/icons-material/Adb";
 import { NavLink } from "react-router-dom";
-// import { AuthContext } from '../../Provider/AuthProvider';
 import useAuth from "../../Hooks/useAuth";
-// import useAuth from '../../Hooks/useAuth';
 
-// const pages = ['Home','Products', 'Selling', 'Services'];
-
-// const settings = [ 'Profile', 'Account', 'Dashboard', 'Logout'];
 
 function Navbar() {
   const { user, logOut } = useAuth();

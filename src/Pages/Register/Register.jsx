@@ -1,14 +1,12 @@
 import { TEInput, TERipple } from "tw-elements-react";
-// import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet-async";
 import { toast } from "react-hot-toast";
-// import useAxiosPublic from "../../Hooks/useAxiosPublic";
-import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 import useAuth from "../../Hooks/useAuth";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 
 
 const Register = () => {
@@ -34,7 +32,7 @@ const Register = () => {
             
         const userInfo = { 
           name: data.name, 
-          // photoURL: data.photoURL,
+          photoURL: data.photoURL,
           email: data.email, 
           
       }
@@ -101,7 +99,7 @@ const Register = () => {
                   name="name"
                   label="Your Name"
                   size="lg"
-                  className="mb-6 text-[#D1A054] border-[#D1A054]"
+                  className="mb-6 border-[#D1A054]"
                 ></TEInput>  
                  {errors.photoURL && (
                   <span className="text-pink-600 text-xs">
@@ -113,7 +111,7 @@ const Register = () => {
                   {...register("photoURL", { required: true })}
                   label="photoURL"
                   size="lg"
-                  className="mb-6 text-[#D1A054] border-[#D1A054]"
+                  className="mb-6 border-[#D1A054]"
                 ></TEInput>
                 {errors.email && (
                   <span className="text-pink-600 -mt-5 text-xs">
@@ -126,7 +124,7 @@ const Register = () => {
                   name="email"
                   label="Email address"
                   size="lg"
-                  className="mb-6 text-[#D1A054] border-[#D1A054]"
+                  className="mb-6 border-[#D1A054]"
                 ></TEInput>
                 {errors.password?.type === "required" && (
                   <span className="text-pink-600 text-xs">

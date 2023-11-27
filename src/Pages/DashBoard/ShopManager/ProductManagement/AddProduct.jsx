@@ -7,15 +7,15 @@ import { Helmet } from "react-helmet-async";
 // import SectionTitle from "../../Components/SEctionTitle";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import SectionTitle from "../../../../Components/SEctionTitle";
-import useAuth from "../../../../Hooks/useAuth";
+// import useAuth from "../../../../Hooks/useAuth";
 import { useState } from "react";
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`; 
 
-const CreateShop = () => { 
+const AddProduct = () => { 
     const { register, handleSubmit } = useForm();      
     const axiosPublic = useAxiosPublic(); 
-    const { user } = useAuth(); 
+    // const { user } = useAuth(); 
     const [productCount, setProductCount] = useState(0);
     const productLimit = 3;
    
@@ -31,20 +31,22 @@ const CreateShop = () => {
          });
          if(res.data.success){
             // now send the menu item to the server with the image url
-             const shop = {  
-                 product_name: data.name, 
+             const productItem = {    
+                 product_name: data.name,          
+                 product_price: data.price,
                  product_image: res.data.data.display_url, 
                  product_location: data.location,
-                 product_quantity: data.quantity,   
+                 product_quantity: data.quantity,
+                 product_category: data.category,   
                  production_cost: data.production_cost, 
-                 product_added_date: data.date, 
-                 profit_margin: data.profit_margin,
+                 product_added_date: data.date,  
+                 profit_margin: data.profit_margin, 
                  discount: data.discount,
                  description: data.description
                  
              } 
             //  
-            const productRes = await axiosPublic.post("/products", shop); 
+            const productRes = await axiosPublic.post("/products", productItem); 
             console.log(productRes.data); 
             if(productRes.data.insertedId){   
               toast.success(`${data.name} is added successfully!`, { duration: 3000 }); 
@@ -88,6 +90,17 @@ const CreateShop = () => {
           </div>
           <div className="form-control  w-full ">
             <label className="label">
+              <span className="label-text">Product Price</span>
+            </label>
+            <input {...register("price", { required: true})} 
+            required 
+              type="number"
+              placeholder="Product Price*"
+              className="input input-bordered w-full"
+            />
+          </div>
+          <div className="form-control  w-full ">
+            <label className="label">
               <span className="label-text">Product Location</span>
             </label>
             <input {...register("location", { required: true})} 
@@ -104,13 +117,33 @@ const CreateShop = () => {
                 <span className="label-text">Product Quantity</span>
               </label>
             <input  
-            {...register("product_quantity", { required: true})} 
+            {...register("quantity", { required: true})} 
             required 
               type="number"
               placeholder="Product Quantity*"
               className="input input-bordered w-full"
             /> 
             </div> 
+            <div className="form-control w-full">  
+              <label className="label"> 
+                <span className="label-text">Category</span>  
+              </label>
+              <select defaultValue="default"
+                {...register("category", { required: true})}
+                className="select select-bordered w-full"
+              >
+                <option disabled value="default"> 
+                  Select a category 
+                </option>
+                <option value="Smartphones and Accessories">Smartphones and Accessories</option>
+                <option value="Laptops and Computers">Laptops and Computers</option>
+                <option value="Audio Devices">Audio Devices</option>
+                <option value="Gaming Gear">Gaming Gear</option>
+                <option value="Cameras and Photography">Cameras and Photography</option>
+                <option value="Wearable Tech">Wearable Tech</option>
+              </select>
+            </div>
+
             <div className="form-control w-full">
               <label className="label">
                 <span className="label-text">Production Cost</span> 
@@ -195,4 +228,4 @@ const CreateShop = () => {
     );
 };
 
-export default CreateShop;
+export default AddProduct;

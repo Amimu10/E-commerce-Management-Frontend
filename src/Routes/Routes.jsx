@@ -1,9 +1,9 @@
-import { createBrowserRouter } from "react-router-dom";
+import { Outlet, createBrowserRouter } from "react-router-dom";
 import MainLayout from "../Main/MainLayout";
 import Home from "../Pages/Home/Home";
 import Products from "../Pages/Products/Products";
 import Services from "../Pages/Services/Services";
-import Login from "../Pages/Login.jsx/LOgin";
+// import Login from "../Pages/Login.jsx/LOgin";
 import Register from "../Pages/Register/Register";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import CreateShop from "../Pages/CreateShop/CreateShop";
@@ -12,13 +12,18 @@ import Dashboard from "../Pages/DashBoard/Dashboard";
 import ProductManagement from "../Pages/DashBoard/ShopManager/ProductManagement/ProductManagement";
 import SellsCollection from "../Pages/DashBoard/SellsCollection/SellsCollection";
 import ShopManangementDashBoard from "../Pages/DashBoard/ShopManager/ProductManagement/ShopManangementDashBoard";
-import { MdAddHome } from "react-icons/md";
+// import { MdAddHome } from "react-icons/md";
 import ManageShop from "../Pages/DashBoard/AdminDashBoard/ManageShop";
 import AdminDashBoard from "../Pages/DashBoard/AdminDashBoard/AdminDashBoard";
 import SellSummary from "../Pages/DashBoard/AdminDashBoard/SellSummary";
 import AllUsers from "../Pages/DashBoard/AdminDashBoard/AllUsers";
 import AdminRoute from "../AdminRoute/AdminRoute";
 import PrivateRoute from "../../src/PrivateRoute/PrivateRoute";
+import ManagerRoute from "../ManagerRoute/ManagerRoute";
+import Login from "../Pages/Login.jsx/Login";
+import AddProduct from "../Pages/DashBoard/ShopManager/ProductManagement/AddProduct";
+import UpdateProduct from "../Pages/DashBoard/ShopManager/ProductManagement/UpdateProduct";
+
 
 
 export const router = createBrowserRouter([
@@ -57,39 +62,34 @@ export const router = createBrowserRouter([
       },
     ],
   },
-  // {
-  //   path: "/shopManagerDashboard", // Corrected path
-  //   element: <ShopManagerDashBoard></ShopManagerDashBoard>,
-  //   children: [
-  //     {
-  //       path: "shopManagement",
-  //       element: <ProductManagement></ProductManagement>,
-  //     },
-  //   ],
-  // },
   {
     path: "dashboard",
     element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     // errorElement: <ErrorPage></ErrorPage>,      
     children: [
+      // shop manager routes
       {
         path: "managementHome",  
-        element: <ShopManangementDashBoard></ShopManangementDashBoard>
+        element: <ManagerRoute><ShopManangementDashBoard></ShopManangementDashBoard></ManagerRoute>
         
       },
       {
         path: "addProduct",  
-        element: <MdAddHome></MdAddHome> 
-        
+        element: <ManagerRoute><AddProduct></AddProduct></ManagerRoute>
       },
+     
       {
         path: "productManagement",  
-        element: <ProductManagement></ProductManagement>
-        
+        element: <ManagerRoute><ProductManagement></ProductManagement></ManagerRoute>
+      },
+      {
+        path: "updateProduct/itemUpdate/:id",     
+        element: <UpdateProduct></UpdateProduct>,
+        loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`) 
       },
       {
         path: "sellsCollection",  
-        element: <SellsCollection></SellsCollection>
+        element: <ManagerRoute><SellsCollection></SellsCollection></ManagerRoute>
         
       },
 
@@ -103,7 +103,7 @@ export const router = createBrowserRouter([
         path: "manageShop",     
         element: <AdminRoute><ManageShop></ManageShop></AdminRoute>  
         
-      },  
+      },       
       { 
         path: "sellSummary",     
         element: <AdminRoute><SellSummary></SellSummary></AdminRoute>  

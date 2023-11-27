@@ -18,6 +18,16 @@ const AllUsers = () => {
     },
   });
 
+ const handleMakeManager = (user) => {
+  axiosSecure.patch(`/users/manager/${user._id}`).then((res) => {                
+    if (res.data.modifiedCount > 0) {     
+      refetch(); 
+      toast.success(`${user.name} is Shop Manager now !`, { duration: 3000 });
+    }
+    console.log(res.data);
+  });
+ }
+
   const handleMakeAdmin = (user) => {
     axiosSecure.patch(`/users/admin/${user._id}`).then((res) => {
       if (res.data.modifiedCount > 0) {
@@ -75,7 +85,13 @@ const AllUsers = () => {
               <th></th>
               <th>Name</th>
               <th>Email</th>
-              <th>Role</th>
+              <th>Role<br></br>
+                Make Admin
+              </th>
+              <th>
+                Role<br></br>
+                Make Manager
+              </th>
               <th>Action</th>
             </tr>
           </thead>
@@ -92,6 +108,18 @@ const AllUsers = () => {
                   ) : (
                     <button
                       onClick={() => handleMakeAdmin(user)}
+                      className=" mt-4 p-2 flex items-center justify-center rounded-md bg-[#D1A054] text-[25px] text-white"
+                    >
+                      <FaUsers></FaUsers>
+                    </button>
+                  )}
+                </td>
+                <td>
+                  {user.role === "manager" ? (
+                    "manager"
+                  ) : (
+                    <button
+                      onClick={() => handleMakeManager(user)}
                       className=" mt-4 p-2 flex items-center justify-center rounded-md bg-[#D1A054] text-[25px] text-white"
                     >
                       <FaUsers></FaUsers>

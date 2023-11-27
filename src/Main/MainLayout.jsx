@@ -9,10 +9,10 @@ const MainLayout = () => {
   
     return (
       <div className="overflow-hidden"> 
-        {noHeaderFooter || <Navbar />} 
+        {noHeaderFooter || <Navbar />}  
         <Outlet /> 
         {noHeaderFooter || <Footer />}
-      </div>
+      </div> 
     );
 };
 

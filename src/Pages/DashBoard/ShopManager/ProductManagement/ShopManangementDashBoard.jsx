@@ -1,34 +1,56 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { MdDashboard } from "react-icons/md";
 
-import SellsCollection from "../../SellsCollection/SellsCollection";
-import ProductManagement from "./ProductManagement";
-import { useState } from "react";
+// import SellsCollection from "../../SellsCollection/SellsCollection";
+// import ProductManagement from "./ProductManagement";
+// import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import SectionTitle from "../../../../Components/SEctionTitle";
-import AddProduct from "./AddProduct";
+// import AddProduct from "./AddProduct";
 import { FaHome } from "react-icons/fa";
+import AddProduct from "./AddProduct";
+import ProductManagement from "./ProductManagement";
+import UpdateProduct from "./UpdateProduct";
 
 const ShopManangementDashBoard = () => {
-  const [currentPage, setCurrentPage] = useState("dashboard");
-
+  // const [currentPage, setCurrentPage] = useState("dashboard");
+  const location = useLocation(); 
+ 
   const renderPage = () => {
-    switch (currentPage) { 
-     case "managementHome": 
-      return <SectionTitle  
-      heading="Shop Manager DashBoard"  
-      subHeading="Welcome" />; 
-      case "addProduct": 
-      return <AddProduct></AddProduct>; 
-      case "productManagement":
-        return <ProductManagement />;
-      case "sellsCollection":
-        return <SellsCollection />;
-        default : 
-        return <SectionTitle  
-        heading="Shop Manager DashBoard"  
-        subHeading="Welcome" />; 
-    }
+    if (location.pathname.includes("managementHome")) {          
+      return <SectionTitle/>    
+  }
+  else if (location.pathname.includes("productManagement")){
+    return <ProductManagement></ProductManagement>
+ } 
+    else if (location.pathname.includes("addProduct")){
+       return <AddProduct></AddProduct>
+  } 
+    else if (location.pathname.includes("updateProduct")){
+       return <UpdateProduct></UpdateProduct>
+  } 
+  
+  
+    // switch (currentPage) { 
+    //  case "managementHome": 
+    //   return <SectionTitle  
+    //   heading="Shop Manager DashBoard"  
+    //   subHeading="Welcome" />; 
+    //   // case "addProduct": 
+    //   // return <AddProduct></AddProduct>; 
+    //  if("productManagement") {
+    //   return <ProductManagement />;
+    //  }
+       
+    //   case "sellsCollection":
+    //     return <SellsCollection />; 
+    //   case "":
+    //     return <SellsCollection />; 
+    //     default : 
+    //     return <SectionTitle  
+    //     heading="Shop Manager DashBoard"  
+    //     subHeading="Welcome" />; 
+    // }
   };
   return (
     <div>
@@ -59,14 +81,14 @@ const ShopManangementDashBoard = () => {
               </Link> 
               <li>
                 <Link 
-                 onClick={() => setCurrentPage("managementHome")}
+                 
                 to="/dashboard/managementHome">  
                     Management Home 
                 </Link>
               </li>
               <li>
                 <NavLink
-                  onClick={() => setCurrentPage("productManagement")}
+              
                   to="/dashboard/productManagement"
                 >
                   Product Management
@@ -74,7 +96,7 @@ const ShopManangementDashBoard = () => {
               </li>
               <li>
                 <NavLink 
-                  onClick={() => setCurrentPage("addProduct")}
+                
                   to="/dashboard/addProduct"
                 >
                   Add Product
@@ -82,7 +104,7 @@ const ShopManangementDashBoard = () => {
               </li>
               <li>
                 <NavLink
-                  onClick={() => setCurrentPage("sellsCollection")}
+               
                   to="/dashboard/sellsCollection"
                 >
                   Sales Collection

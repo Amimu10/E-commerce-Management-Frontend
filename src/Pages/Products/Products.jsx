@@ -7,11 +7,11 @@ import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 import useShop from "../../Hooks/useShop";
+import 'sweetalert2/dist/sweetalert2.min.css';
 
-// import SectionTitle from "../../Components/SEctionTitle";
 
 const Products = () => {
-  const [products,, refetch] = useProducts();
+  const [products,, refetch] = useProducts(); 
   const [shop] = useShop();  
   console.log(shop.name);  
   const {user} = useAuth();  
@@ -23,28 +23,28 @@ const Products = () => {
 
 const handleAdToCart = (product) => {
     // console.log("add soon");
-    if(user && user?.email) { 
+    if(user && user?.email) {  
         if (addedProducts.includes(product._id)) {
-            Swal.fire({
-              title: "Product Already Added",
-              text: "This product is already in your cart.",
-              icon: "warning",
-            });
-            return;
+            Swal.fire({  
+              title: "Product Already Added",  
+              text: "This product is already in your cart.", 
+              icon: "warning",  
+            });    
+            return;    
           }
         //  send cart itm to the database  
         const cartItem = {    
             cartId: product._id,  
             email: user?.email,   
             name: user?.displayName,   
-            product_name: product.product_name,   
-            product_quantity: product.product_quantity,     
-            product_price: product.product_price,    
-            product_image: product.product_image, 
-            product_category: product.product_category,
-            production_cost: product.production_cost,  
-            cartQuantity: cartQuantity, 
-            selling_date: new Date()
+            product_name: product.product_name,    
+            product_quantity: product.product_quantity,        
+            product_price: product.product_price,        
+            product_image: product.product_image,    
+            product_category: product.product_category,  
+            production_cost: product.production_cost,    
+            cartQuantity: cartQuantity,   
+            selling_date: new Date()  
         } 
     console.log(cartItem);
        axiosSecure.post("carts", cartItem) 
@@ -52,9 +52,9 @@ const handleAdToCart = (product) => {
         if(res.data.insertedId){ 
           toast.success(`${product.product_name} added to your cart`, { duration: 3000 }); 
           // refetch cart product
-          refetch(); 
+         
         }
-    
+        refetch(); 
         setAddedProducts((prevProducts) => [...prevProducts, product._id]);
       })
   

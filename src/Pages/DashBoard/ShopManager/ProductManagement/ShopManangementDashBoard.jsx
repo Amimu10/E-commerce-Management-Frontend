@@ -12,6 +12,8 @@ import AddProduct from "./AddProduct";
 import ProductManagement from "./ProductManagement";
 import UpdateProduct from "./UpdateProduct";
 import SalesSummary from "./SalesSummary";
+import Subscription from "../Subscription";
+import Payment from "./Payment/Payment";
 
 const ShopManangementDashBoard = () => {
   // const [currentPage, setCurrentPage] = useState("dashboard");
@@ -32,29 +34,15 @@ const ShopManangementDashBoard = () => {
   } 
     else if (location.pathname.includes("salesSummary")){
        return <SalesSummary></SalesSummary> 
-  } 
+  }
+else if (location.pathname.includes("subscription")){
+   return <Subscription></Subscription>
+}  
+else if (location.pathname.includes("payment")){
+   return <Payment></Payment>
+}  
   
-  
-    // switch (currentPage) { 
-    //  case "managementHome": 
-    //   return <SectionTitle  
-    //   heading="Shop Manager DashBoard"  
-    //   subHeading="Welcome" />; 
-    //   // case "addProduct": 
-    //   // return <AddProduct></AddProduct>; 
-    //  if("productManagement") {
-    //   return <ProductManagement />;
-    //  }
-       
-    //   case "sellsCollection":
-    //     return <SellsCollection />; 
-    //   case "":
-    //     return <SellsCollection />; 
-    //     default : 
-    //     return <SectionTitle  
-    //     heading="Shop Manager DashBoard"  
-    //     subHeading="Welcome" />; 
-    // }
+
   };
   return (
     <div>
@@ -118,8 +106,13 @@ const ShopManangementDashBoard = () => {
                 <Link href="#">Check-Out</Link>
               </li>
               <li>
-                <Link href="#">Subscription & Payment</Link>
-              </li>
+                <NavLink 
+               
+                  to="/dashboard/subscription"
+                >
+                  Subscription & Payment  
+                </NavLink>   
+              </li> 
               <li>
                 <NavLink 
                 

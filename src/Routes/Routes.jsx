@@ -24,6 +24,8 @@ import Login from "../Pages/Login.jsx/Login";
 import AddProduct from "../Pages/DashBoard/ShopManager/ProductManagement/AddProduct";
 import UpdateProduct from "../Pages/DashBoard/ShopManager/ProductManagement/UpdateProduct";
 import SalesSummary from "../Pages/DashBoard/ShopManager/ProductManagement/SalesSummary";
+import Subscription from "../Pages/DashBoard/ShopManager/Subscription";
+import Payment from "../Pages/DashBoard/ShopManager/ProductManagement/Payment/Payment";
 
 
 
@@ -78,7 +80,10 @@ export const router = createBrowserRouter([
         path: "addProduct",  
         element: <ManagerRoute><AddProduct></AddProduct></ManagerRoute>
       },
-     
+      {
+        path: "payment",
+        element : <Payment></Payment>    
+     },
       {
         path: "productManagement",  
         element: <ManagerRoute><ProductManagement></ProductManagement></ManagerRoute>
@@ -96,6 +101,11 @@ export const router = createBrowserRouter([
       {
         path: "salesSummary",  
         element: <ManagerRoute><SalesSummary></SalesSummary></ManagerRoute>
+        
+      },
+      {
+        path: "subscription",  
+        element: <ManagerRoute><Subscription></Subscription></ManagerRoute>
         
       },
 

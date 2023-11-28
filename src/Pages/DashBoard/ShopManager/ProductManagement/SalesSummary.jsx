@@ -5,25 +5,27 @@ const SalesSummary = () => {
 
   console.log(cart);
 
-//   const totalPrice = cart.reduce(
-//     (total, item) => total + parseInt(item.product_price), 
-//     0
-//   );
-//   console.log("total price", totalPrice);
-const totalPrice = cart.reduce((total, item) => {
-    const productPrice = parseInt(item.product_price);
+  const totalPrice = cart.reduce(
+    (total, item) => total + (item.product_price), 
+    0 
+  );
+  console.log("total price", totalPrice);
 
-    if (isNaN(productPrice)) {
-        console.error(
-            `Invalid product_price for item with _id ${item._id}: ${item.product_price}`
-        );
-        return total;
-    }
 
-    return total + productPrice * item.cartQuantity;
-}, 0);
+// const totalPrice = cart.reduce((total, item) => {
+//     const productPrice = parseInt(item.product_price);
 
-console.log("Total Sale:", totalPrice);
+//     if (isNaN(productPrice)) {
+//         console.error(
+//             `Invalid product_price for item with _id ${item._id}: ${item.product_price}`
+//         );
+//         return total;
+//     }
+
+//     return total + productPrice * item.cartQuantity;
+// }, 0);
+
+// console.log("Total Sale:", totalPrice);
 
   // const totalInvest = cart.reduce((total, item) => total + parseInt(item.production_cost), 0);
   // console.log("Total Invest:", totalInvest);

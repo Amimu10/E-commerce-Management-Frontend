@@ -89,9 +89,9 @@ export const router = createBrowserRouter([
         element: <ManagerRoute><ProductManagement></ProductManagement></ManagerRoute>
       },
       {
-        path: "updateProduct/itemUpdate/:id",     
-        element: <UpdateProduct></UpdateProduct>,
-        loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`) 
+        path: "updateProduct/itemUpdate/:id",      
+        element: <ManagerRoute><UpdateProduct></UpdateProduct></ManagerRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`)  
       },
       {
         path: "sellsCollection",  

@@ -11,25 +11,6 @@ const SalesSummary = () => {
   );
   console.log("total price", totalPrice);
 
-
-// const totalPrice = cart.reduce((total, item) => {
-//     const productPrice = parseInt(item.product_price);
-
-//     if (isNaN(productPrice)) {
-//         console.error(
-//             `Invalid product_price for item with _id ${item._id}: ${item.product_price}`
-//         );
-//         return total;
-//     }
-
-//     return total + productPrice * item.cartQuantity;
-// }, 0);
-
-// console.log("Total Sale:", totalPrice);
-
-  // const totalInvest = cart.reduce((total, item) => total + parseInt(item.production_cost), 0);
-  // console.log("Total Invest:", totalInvest);
-
   const totalInvest = cart.reduce((total, item) => {
     const productionCost = parseInt(item.production_cost);
 
@@ -50,7 +31,7 @@ const SalesSummary = () => {
 
   return (
     <div>
-      <p>Sales Count</p>
+      <p className="text-3xl font-inter text-center my-6">Sales Count</p>
       <div className="grid md:grid-cols-3 grid-cols-1 mx-auto gap-8">
         <div className="card  bg-primary text-primary-content">
           <div className="card-body">

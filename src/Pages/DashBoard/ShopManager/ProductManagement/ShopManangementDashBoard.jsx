@@ -16,7 +16,6 @@ import Subscription from "../Subscription";
 import Payment from "./Payment/Payment";
 
 const ShopManangementDashBoard = () => {
-  // const [currentPage, setCurrentPage] = useState("dashboard");
   const location = useLocation(); 
  
   const renderPage = () => {
@@ -42,7 +41,6 @@ else if (location.pathname.includes("payment")){
    return <Payment></Payment>
 }  
   
-
   };
   return (
     <div>

@@ -83,7 +83,7 @@ const ProductManagement = () => {
                     <div className="flex items-center gap-3">
                       <div className="avatar">
                         <div className="mask mask-squircle w-[75px]">
-                          <img
+                          <img 
                             src={item.product_image} 
                             alt="Avatar Tailwind CSS Component"
                           />

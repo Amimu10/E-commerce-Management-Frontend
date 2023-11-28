@@ -23,6 +23,7 @@ import ManagerRoute from "../ManagerRoute/ManagerRoute";
 import Login from "../Pages/Login.jsx/Login";
 import AddProduct from "../Pages/DashBoard/ShopManager/ProductManagement/AddProduct";
 import UpdateProduct from "../Pages/DashBoard/ShopManager/ProductManagement/UpdateProduct";
+import SalesSummary from "../Pages/DashBoard/ShopManager/ProductManagement/SalesSummary";
 
 
 
@@ -90,6 +91,11 @@ export const router = createBrowserRouter([
       {
         path: "sellsCollection",  
         element: <ManagerRoute><SellsCollection></SellsCollection></ManagerRoute>
+        
+      },
+      {
+        path: "salesSummary",  
+        element: <ManagerRoute><SalesSummary></SalesSummary></ManagerRoute>
         
       },
 

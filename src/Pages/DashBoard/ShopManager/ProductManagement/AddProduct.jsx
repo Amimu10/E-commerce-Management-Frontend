@@ -41,7 +41,7 @@ const AddProduct = () => {
                  production_cost: data.production_cost, 
                  product_added_date: data.date,  
                  profit_margin: data.profit_margin, 
-                 discount: data.discount,
+                 discount: data.discount, 
                  description: data.description
                  
              } 

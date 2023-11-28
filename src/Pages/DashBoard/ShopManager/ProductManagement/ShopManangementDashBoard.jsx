@@ -11,6 +11,7 @@ import { FaHome } from "react-icons/fa";
 import AddProduct from "./AddProduct";
 import ProductManagement from "./ProductManagement";
 import UpdateProduct from "./UpdateProduct";
+import SalesSummary from "./SalesSummary";
 
 const ShopManangementDashBoard = () => {
   // const [currentPage, setCurrentPage] = useState("dashboard");
@@ -28,6 +29,9 @@ const ShopManangementDashBoard = () => {
   } 
     else if (location.pathname.includes("updateProduct")){
        return <UpdateProduct></UpdateProduct>
+  } 
+    else if (location.pathname.includes("salesSummary")){
+       return <SalesSummary></SalesSummary> 
   } 
   
   
@@ -117,7 +121,12 @@ const ShopManangementDashBoard = () => {
                 <Link href="#">Subscription & Payment</Link>
               </li>
               <li>
-                <Link href="#">Sales Summary</Link>
+                <NavLink 
+                
+                  to="/dashboard/salesSummary"
+                >
+                  Sales Summary
+                </NavLink>
               </li>
             </ul>
           </div>

@@ -267,11 +267,12 @@
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
-import SectionTitle from "../../../../Components/SectionTitle";
+// import SectionTitle from "../../../../Components/SectionTitle";
 import { Helmet } from "react-helmet-async";
 import useAxiosSecure from "../../../../Hooks/UseAxiosSecure";
 import {  useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import SectionTitle from "../../../../Components/SEctionTitle";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -416,18 +417,18 @@ const UpdateProduct = () => {
               <option disabled value="default">
                 Select a category
               </option>
-              <option value="Smartphones and Accessories">
-                Smartphones and Accessories
+              <option value="Smartphones_and_Accessories">
+                Smartphones_and_Accessories
               </option>
-              <option value="Laptops and Computers">
-                Laptops and Computers
+              <option value="Laptops_and_Computers">
+                Laptops_and_Computers
               </option>
-              <option value="Audio Devices">Audio Devices</option>
-              <option value="Gaming Gear">Gaming Gear</option>
-              <option value="Cameras and Photography">
-                Cameras and Photography
+              <option value="Audio_Devices">Audio_Devices</option>
+              <option value="Gaming_Gear">Gaming_Gear</option>
+              <option value="Cameras_and_Photography">
+                Cameras_and_Photography
               </option>
-              <option value="Wearable Tech">Wearable Tech</option>
+              <option value="Wearable_Tech">Wearable_Tech</option>
             </select>
           </div>
 

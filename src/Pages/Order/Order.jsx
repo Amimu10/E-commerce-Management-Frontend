@@ -17,12 +17,12 @@
 //     // const [menu] = UseMenu(); 
 //     const [products] = useProducts(); 
     
-//     const Smartphones_and_Accessories = products.filter(item => item.category === "Smartphones and Accessories"); 
-//     const Laptops_and_Computers = products.filter(item => item.category === "Laptops and Computers"); 
-//     const Audio_Devices = products.filter(item => item.category === "Audio Devices"); 
-//     const Gaming_Gear = products.filter(item => item.category === "Gaming Gear"); 
-//     const Cameras_and_Photography = products.filter(item => item.category === "Cameras and Photography"); 
-//     const Wearable_Tech = products.filter(item => item.category === "Wearable Tech"); 
+    // const Smartphones_and_Accessories = products.filter(item => item.category === "Smartphones and Accessories"); 
+    // const Laptops_and_Computers = products.filter(item => item.category === "Laptops and Computers"); 
+    // const Audio_Devices = products.filter(item => item.category === "Audio Devices"); 
+    // const Gaming_Gear = products.filter(item => item.category === "Gaming Gear"); 
+    // const Cameras_and_Photography = products.filter(item => item.category === "Cameras and Photography"); 
+    // const Wearable_Tech = products.filter(item => item.category === "Wearable Tech"); 
 //   return (  
 //     <div>
 //       <Helmet>

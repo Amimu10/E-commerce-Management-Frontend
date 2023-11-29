@@ -1,0 +1,35 @@
+[
+      {
+        "id": 1,
+        "category": "Smartphones_and_Accessories",
+        "image": "https://source.unsplash.com/featured/?smartphone"
+      },
+      {
+        "id": 2,
+        "category": "Laptops_and_Computers",
+        "image": "https://source.unsplash.com/featured/?laptop"
+      },
+      {
+        "id": 3,
+        "category": "Audio_Devices",
+        "image": "https://source.unsplash.com/featured/?headphones"
+      },
+      {
+        "id": 4,
+        "category": "Gaming_Gear",
+        "image": "https://source.unsplash.com/featured/?gaming"
+      },
+      {
+        "id": 5,
+        "category": "Cameras_and_Photography",
+        "image": "https://source.unsplash.com/featured/?camera"
+      },
+      {
+        "id": 6,
+        "category": "Wearable_Tech",
+        "image": "https://source.unsplash.com/featured/?smartwatch"
+      }
+
+    ]
+  
+  

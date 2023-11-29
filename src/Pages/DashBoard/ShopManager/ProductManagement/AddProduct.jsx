@@ -135,12 +135,12 @@ const AddProduct = () => {
                 <option disabled value="default"> 
                   Select a category 
                 </option>
-                <option value="Smartphones and Accessories">Smartphones and Accessories</option>
-                <option value="Laptops and Computers">Laptops and Computers</option>
-                <option value="Audio Devices">Audio Devices</option>
-                <option value="Gaming Gear">Gaming Gear</option>
-                <option value="Cameras and Photography">Cameras and Photography</option>
-                <option value="Wearable Tech">Wearable Tech</option>
+                <option value="Smartphones and Accessories">Smartphones_and_Accessories</option>
+                <option value="Laptops and Computers">Laptops_and_Computers</option>
+                <option value="Audio Devices">Audio_Devices</option>
+                <option value="Gaming Gear">Gaming_Gear</option>
+                <option value="Cameras and Photography">Cameras_and_Photography</option>
+                <option value="Wearable Tech">Wearable_Tech</option>
               </select>
             </div>
 

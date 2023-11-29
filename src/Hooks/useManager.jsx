@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "./useAuth";
-import useAxiosSecure from "./useAxiosSecure";
+import useAxiosSecure from "./UseAxiosSecure";
+// import useAxiosSecure from "./useAxiosSecure";
 
 const useManager = () => {
     const {user} = useAuth(); 
@@ -8,10 +9,10 @@ const useManager = () => {
     const axiosSecure = useAxiosSecure(); 
     const {data: isManager, isPending: isManagerLoading, refetch} = useQuery({  
         queryKey: [user?.email, "isManager"],      
-        queryFn: async () => {    
+        queryFn: async () => {   
            const res = await axiosSecure.get(`/users/manager/${user?.email}`); 
            console.log(res.data); 
-           return res.data.admin;   
+           return res.data.manager;   
         }
     })
     return [isManager, isManagerLoading, refetch];  

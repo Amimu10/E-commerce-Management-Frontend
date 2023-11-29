@@ -1,43 +1,88 @@
-import useAdmin from "../../Hooks/useAdmin";
-// import useManager from "../../Hooks/useManager";
-import AdminDashBoard from "./AdminDashBoard/AdminDashBoard";
-import ShopManangementDashBoard from "./ShopManager/ProductManagement/ShopManangementDashBoard";
+// // import useAdmin from "../../Hooks/useAdmin";
+// // // import useManager from "../../Hooks/useManager";
+// // import AdminDashBoard from "./AdminDashBoard/AdminDashBoard";
+// // import ShopManangementDashBoard from "./ShopManager/ProductManagement/ShopManangementDashBoard";
+// // import UserDashboard from "./UserDasboard/UserDashboard";
 
 
-const Dashboard = () => {     
-    const [isAdmin] = useAdmin(); 
-    // const  [isManager] = useManager(); 
-    // const isAdmin = true;             
-    return (      
-        <div>    
-        {
-            isAdmin ? <AdminDashBoard></AdminDashBoard> 
+// // const Dashboard = () => {     
+// //     const [isAdmin] = useAdmin(); 
+// //     const  [isManager] = useManager(); 
+// //     // const isAdmin = true;      
+
+// //     return (      
+// //         <div>    
+// //         {
+// //             isAdmin ? <AdminDashBoard></AdminDashBoard> && 
             
-            : <ShopManangementDashBoard></ShopManangementDashBoard> 
-        } 
+// //           isManager?   : <ShopManangementDashBoard></ShopManangementDashBoard> && 
+// //             :
+// //             <UserDashboard></UserDashboard>
+// //         } 
 
-        </div>
-    );
-};
+// //         </div>
+// //     );
+// // };
 
-export default Dashboard;
+// // export default Dashboard;
 
 
 // import useAdmin from "../../Hooks/useAdmin";
-// import useManager from "../../Hooks/useManager";
+// // import useCustomer from "../../Hooks/useCustomer";
+// // import useManager from "../../Hooks/useManager";
 // import AdminDashBoard from "./AdminDashBoard/AdminDashBoard";
-// import ShopManagementDashBoard from "./ShopManager/ProductManagement/ShopManagementDashBoard";
+// // import ShopManangementDashBoard from "./ShopManager/ProductManagement/ShopManangementDashBoard";
+// // import UserDashboard from "./UserDasboard/UserDashboard";
 
 // const Dashboard = () => {
-//     const [isAdmin] = useAdmin();
-//     const [isManager] = useManager();
+//   const [isAdmin] = useAdmin();
+//   // const [isManager] = useManager();
+//   // const [isCustomer] = useCustomer(); 
 
-//     return (
-//         <div>
-//             {isAdmin && <AdminDashBoard />}
-//             {isManager && <ShopManagementDashBoard />}
-//         </div>
-//     );
+//   return (
+//     <div>
+//   {
+//      isAdmin && <AdminDashBoard></AdminDashBoard>
+//   }
+
+
+    
+//     </div>
+//   );
 // };
 
 // export default Dashboard;
+
+
+
+import useCustomer from "../../Hooks/useCustomer";
+import useAdmin from "../../Hooks/useAdmin";
+import useManager from "../../Hooks/useManager";
+import AdminDashBoard from "./AdminDashBoard/AdminDashBoard";
+import ShopManangementDashBoard from "./ShopManager/ProductManagement/ShopManangementDashBoard";
+import UserDashboard from "./UserDasboard/UserDashboard";
+
+const Dashboard = () => {
+  const [isAdmin] = useAdmin();
+  const [isManager] = useManager();
+  console.log(isManager); 
+  const [isCustomer] = useCustomer();      
+  console.log(isCustomer);    
+  //  const isCustomer = true;   
+  return (
+    <div>
+     { 
+        isAdmin && !isManager && !isCustomer && <AdminDashBoard></AdminDashBoard> 
+     } 
+
+     {
+      isManager && !isCustomer && !isAdmin && <ShopManangementDashBoard></ShopManangementDashBoard>
+     }
+     {
+       isCustomer && !isAdmin && !isManager && <UserDashboard></UserDashboard> 
+     }
+    </div>
+  );
+};
+
+export default Dashboard;

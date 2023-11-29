@@ -1,27 +1,23 @@
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-// import { useNavigate } from "react-router-dom";
-import useAuth from "../../../../../Hooks/useAuth";
-import useAxiosSecure from "../../../../../Hooks/UseAxiosSecure";
-import useSubscription from "../../../../../Hooks/useSubscription";
+import useCart from "../../../../Hooks/useCart";
+import useAxiosSecure from "../../../../Hooks/UseAxiosSecure";
+import useAuth from "../../../../Hooks/useAuth";
 
-const CheckoutForm = () => {
+
+const UserCheckoutForm = () => {
   const [error, setError] = useState("");
   const [clientSecret, setClientSecret] = useState("");
   const [transactionId, setTransactionId] = useState("");
-  const { user } = useAuth();
-  const stripe = useStripe();
-  const elements = useElements();
+  const { user } = useAuth(); 
+  const stripe = useStripe(); 
+  const elements = useElements(); 
   const axiosSecure = useAxiosSecure();
-  const [subscription, , refetch] = useSubscription(); 
-  console.log("subscription", subscription);
-  // const totalPrice = subscription.reduce((total, item)=> total + item.price, 0);
-  // const navigate = useNavigate();
-  // const price = subscription.length > 0 ? subscription[0].price : 0;
-  const totalPrice = subscription.reduce((total, item)=> total + item.price, 0);
-  // const navigate = useNavigate();  
-   
+  const [cart, , refetch] = useCart(); 
+  console.log("cart", cart);
+  const totalPrice = cart.reduce((total, item)=> total + item.product_price, 0);
+ 
   useEffect( () => { 
     if(totalPrice > 0){   
       axiosSecure.post("/create-payment-intent", {price: totalPrice})  
@@ -79,16 +75,15 @@ const CheckoutForm = () => {
         console.log("transaction id", paymentIntent.id);
 
         //  now save the payment in the database
-        const payment = {
+        const cartPayment = { 
           email: user.email,
           price: totalPrice,
           transactionId: paymentIntent.id,   
           date: new Date(),  
-          cartIds: subscription.map(item => item._id), 
-          product_limit: subscription.map(item => item.productLimit,),
-          status: "pending",   
+          cartIds: cart.map(item => item._id), 
+          status: "pending",    
         };
-        const res = await axiosSecure.post("/payments", payment);
+        const res = await axiosSecure.post("/customerPayments", cartPayment);  
         refetch();
         if (res.data.paymentResult?.insertedId) {
           toast.success("Payment Successfull !", { duration: 3000 });
@@ -136,4 +131,4 @@ const CheckoutForm = () => {
   );
 };
 
-export default CheckoutForm;
+export default UserCheckoutForm;

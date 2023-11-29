@@ -5,7 +5,7 @@ import { MdDashboard } from "react-icons/md";
 // import ProductManagement from "./ProductManagement";
 // import { useState } from "react";
 import { Helmet } from "react-helmet-async";
-import SectionTitle from "../../../../Components/SEctionTitle";
+// import SectionTitle from "../../../../Components/SEctionTitle";
 // import AddProduct from "./AddProduct";
 import { FaHome } from "react-icons/fa";
 import AddProduct from "./AddProduct";
@@ -14,6 +14,7 @@ import UpdateProduct from "./UpdateProduct";
 import SalesSummary from "./SalesSummary";
 import Subscription from "../Subscription";
 import Payment from "./Payment/Payment";
+import SectionTitle from "../../../../Components/SEctionTitle";
 
 const ShopManangementDashBoard = () => {
   const location = useLocation(); 
@@ -25,10 +26,10 @@ const ShopManangementDashBoard = () => {
   else if (location.pathname.includes("productManagement")){
     return <ProductManagement></ProductManagement>
  } 
-    else if (location.pathname.includes("addProduct")){
-       return <AddProduct></AddProduct>
+    else if (location.pathname.includes("addProduct")){ 
+       return <AddProduct></AddProduct>    
   } 
-    else if (location.pathname.includes("updateProduct")){
+    else if (location.pathname.includes("updateProduct")){    
        return <UpdateProduct></UpdateProduct>
   } 
     else if (location.pathname.includes("salesSummary")){

@@ -1,11 +1,11 @@
 import {loadStripe} from '@stripe/stripe-js';
 import {Elements} from '@stripe/react-stripe-js'; 
-import CheckoutForm from './CheckoutForm'; 
+import UserCheckoutForm from './UserCheckoutForm';
 
 // TODO: add publishable key 
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK); 
-const Payment = () => {  
-
+const UserPayment = () => {  
+  
   return ( 
     <div>
       <div className="text-center my-8">
@@ -15,11 +15,11 @@ const Payment = () => {
       </div> 
         <div>
             <Elements stripe={stripePromise}> 
-              <CheckoutForm></CheckoutForm> 
+              <UserCheckoutForm></UserCheckoutForm>
             </Elements>
         </div>
     </div>
   );
 };
 
-export default Payment;
+export default UserPayment;

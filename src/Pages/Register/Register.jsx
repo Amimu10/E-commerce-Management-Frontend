@@ -15,7 +15,6 @@ const Register = () => {
     register,
     handleSubmit,
     reset, 
-    watch,
     formState: { errors },
   } = useForm();
   const navigate = useNavigate(); 
@@ -53,7 +52,7 @@ const Register = () => {
     });
   };
 
-  console.log(watch("example"));
+  // console.log(watch("example"));
 
   return (
     <>

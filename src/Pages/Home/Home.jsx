@@ -15,7 +15,7 @@ const Home = () => {
            <title>Tech-Buddy | Home</title>  
             </Helmet> 
             <Banner ></Banner> 
-            <Category></Category>
+            <Category></Category> 
             <Products></Products>
             {/* <Order></Order> */}
             {/* <Services></Services> */}

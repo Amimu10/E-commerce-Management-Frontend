@@ -1,18 +1,41 @@
+import { useEffect, useState } from "react";
 import useCart from "../../../Hooks/useCart";
 import useProducts from "../../../Hooks/useProducts";
-import useSubscription from "../../../Hooks/useSubscription";
+import useAxiosSecure from "../../../Hooks/UseAxiosSecure";
 
 
 const SellSummary = () => {
+  const axiosSecure = useAxiosSecure(); 
     const [products] = useProducts(); 
     console.log(products);
+    const [cart] = useCart();  
+    console.log(cart); 
+  
 
-    const [subscription] = useSubscription();  
-    console.log(subscription); 
-     const [cart] = useCart();  
-      console.log(cart); 
+    const [data, setData] = useState([]); 
+    const [totalIncome, setTotalIncome] = useState(0); 
 
-   const totalSale = cart.reduce((total, item) => (total + item.product_price), 0);
+const totalSale = cart.reduce((total, item) => (total + item.cartQuantity
+  ), 0);
+
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const response = await axiosSecure.get("subscriptionIncome");
+      setData(response.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  fetchData();
+}, [axiosSecure]);
+
+useEffect(() => {
+  const newTotalIncome = data.reduce((total, item) => parseInt(total + item.price), 0); 
+   setTotalIncome(newTotalIncome);
+}, [data])
+   
 
     return (
         <div>
@@ -21,7 +44,7 @@ const SellSummary = () => {
         <div className="card  bg-primary text-primary-content">
           <div className="card-body"> 
             <h2 className="card-title">Total Income</h2>  
-            <p>$ {subscription.product_price}</p>  
+            <p>$ {totalIncome}</p>  
           </div>
         </div>
         <div className="card bg-primary text-primary-content"> 

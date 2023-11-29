@@ -12,10 +12,13 @@ import Tooltip from "@mui/material/Tooltip";
 import AdbIcon from "@mui/icons-material/Adb";
 import { NavLink } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
-
+import useCart from "../../Hooks/useCart";
+import { FaShoppingCart } from "react-icons/fa"; 
 
 function Navbar() {
   const { user, logOut } = useAuth();
+  const [cart] = useCart(); 
+  console.log(cart);
   // console.log(cart);
   const name = user?.displayName;
   const photo = user?.photoURL;
@@ -69,16 +72,21 @@ function Navbar() {
           PRODUCTS
         </NavLink>
       </li>
-      <li>
-        <NavLink className="" to="/selling">
-          SELLING
+      {
+        user ? 
+        <li>
+        <NavLink to="/dashboard/cart"> 
+          <button className=""> 
+         <div className="flex gap-[1px] items-center"> 
+         <FaShoppingCart /> 
+            <span className="badge badge-secondary">+{cart.length}</span>
+         </div>   
+          </button>   
         </NavLink>
       </li>
-      <li>
-        <NavLink className="" to="/services">
-          SERVICES
-        </NavLink>
-      </li>
+      : 
+      null
+      }
     </>
   );
 
@@ -121,10 +129,11 @@ function Navbar() {
       sx={{
         position: "fixed",
         left: 0,
-        maxWidth: "1153px",
+        right: 0,
+        maxWidth: "1152px", 
         margin: "auto",
         zIndex: 1000,
-        backgroundColor: "black",
+        backgroundColor: "rgba(0, 0, 0, 0.4)",
         opacity: 40,
       }}
     >

@@ -26,6 +26,11 @@ import UpdateProduct from "../Pages/DashBoard/ShopManager/ProductManagement/Upda
 import SalesSummary from "../Pages/DashBoard/ShopManager/ProductManagement/SalesSummary";
 import Subscription from "../Pages/DashBoard/ShopManager/Subscription";
 import Payment from "../Pages/DashBoard/ShopManager/ProductManagement/Payment/Payment";
+import UserCart from "../Pages/DashBoard/UserDasboard/UserCart";
+import CustomerRoute from "../CustomerRoute/CustomerRoute";
+import UserDashBoard from "../Pages/DashBoard/UserDasboard/UserDashboard";
+import UserPayment from "../Pages/DashBoard/UserDasboard/UserPayment/UserPayment";
+import CategoryData from "../Pages/Home/Categories/CategoryData";
 
 
 
@@ -52,6 +57,12 @@ export const router = createBrowserRouter([
         element: <Products></Products>,
       },
       {
+        path: "/showCategory/:category",     
+        element: <CategoryData></CategoryData>,   
+        loader: ({params}) => fetch(`http://localhost:5000/updateproducts/${params.category}`)                   
+      },
+    
+      {
         path: "/services",
         element: <Services></Services>,
       },
@@ -70,20 +81,33 @@ export const router = createBrowserRouter([
     element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     // errorElement: <ErrorPage></ErrorPage>,      
     children: [
+      // customer routes 
+      {
+         path: "cart", 
+         element: <CustomerRoute><UserCart></UserCart></CustomerRoute>
+      }, 
+      { 
+         path: "dashboardHome",  
+         element: <CustomerRoute><UserDashBoard></UserDashBoard></CustomerRoute>
+      }, 
+      { 
+         path: "userPayment",  
+         element: <CustomerRoute><UserPayment></UserPayment></CustomerRoute>
+      }, 
       // shop manager routes
       {
         path: "managementHome",  
         element: <ManagerRoute><ShopManangementDashBoard></ShopManangementDashBoard></ManagerRoute>
         
-      },
+      }, 
       {
         path: "addProduct",  
         element: <ManagerRoute><AddProduct></AddProduct></ManagerRoute>
       },
       {
-        path: "payment",
-        element : <Payment></Payment>    
-     },
+        path: "payment",  
+        element : <PrivateRoute><Payment></Payment></PrivateRoute>  
+     },  
       {
         path: "productManagement",  
         element: <ManagerRoute><ProductManagement></ProductManagement></ManagerRoute>

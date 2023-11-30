@@ -27,7 +27,7 @@ const Dashboard = () => {
      {
        isCustomer && !isAdmin && !isManager && <UserDashboard></UserDashboard> 
      }
-    </div>
+    </div> 
   );
 };
 

@@ -61,7 +61,7 @@ export const router = createBrowserRouter([
       {
         path: "/showCategory/:category",   
         element: <CategoryData></CategoryData>,  
-        loader: ({params}) => fetch(`https://inventory-management-server-ashy.vercel.app/updateproducts/${params.category}`)                   
+        loader: ({params}) => fetch(` https://inventory-management-server-ashy.vercel.app/updateproducts/${params.category}`)                   
       },
     
       {
@@ -113,7 +113,7 @@ export const router = createBrowserRouter([
       {
         path: "checkout/checkoutProduct/:id",   
         element: <ManagerRoute><Checkout></Checkout></ManagerRoute>,
-        // loader: ({params}) => fetch(`https://inventory-management-server-ashy.vercel.app/checkoutProduct/${params.id}`)  
+        // loader: ({params}) => fetch(` https://inventory-management-server-ashy.vercel.app/checkoutProduct/${params.id}`)  
       }, 
       {
         path: "payment",   
@@ -126,7 +126,7 @@ export const router = createBrowserRouter([
       { 
         path: "updateProduct/itemUpdate/:id",      
         element: <ManagerRoute><UpdateProduct></UpdateProduct></ManagerRoute>,
-        loader: ({params}) => fetch(`https://inventory-management-server-ashy.vercel.app/products/${params.id}`)  
+        loader: ({params}) => fetch(` https://inventory-management-server-ashy.vercel.app/products/${params.id}`)  
       },
       {
         path: "sellsCollection",  

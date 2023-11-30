@@ -3,14 +3,16 @@ import useCart from "../../../Hooks/useCart";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import Swal from "sweetalert2";
 import { toast } from "react-hot-toast";
-import useAxiosPublic from "../../../Hooks/useAxiosPublic";   
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+// import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+// import useAxiosPublic from "../../../Hooks/useAxiosPublic";   
  
 const UserCart = () => { 
   const [cart, refetch] = useCart();     
   const totalPrice = cart.reduce((total, item) => total + parseInt(item.product_price), 0);   
   // const axiosSecure = useAxiosSecure();  
-  const axiosPublic = useAxiosPublic(); 
-
+  // const axiosPublic = useAxiosPublic(); 
+ const axiosSecure = useAxiosSecure(); 
   const handleDelete = (id) => {  
     Swal.fire({
       title: "Are you sure?",
@@ -22,7 +24,7 @@ const UserCart = () => {
       confirmButtonText: "Yes, delete it!",  
     }).then((result) => {
       if (result.isConfirmed) {  
-        axiosPublic.delete(`/carts/${id}`).then((res) => { 
+        axiosSecure.delete(`/carts/${id}`).then((res) => { 
           if (res.data.deletedCount > 0) {
             refetch();
             toast.success("Successfully Deleted!", { duration: 3000 });

@@ -18,6 +18,8 @@ import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 import useAuth from "../../Hooks/useAuth";
 import { useEffect, useState } from "react";
 // import useAuth from "../../Hooks/useAuth";
+import Lottie from "lottie-react"; 
+import loginamimation from "../../../public/login.json"; 
 
 const Login = () => {
   const { signInUser } = useAuth(); 
@@ -76,10 +78,7 @@ const from = location.state?.form?.pathname || "/";
               <Link to="/">
                 <FaHome className="text-4xl text-[#D1A054] hover:scale-110 duration-300" />
               </Link> 
-              <img
-                className="max-w-full flex-1"
-                alt="Sample image"
-              />
+              <Lottie animationData={loginamimation} />
             </div>
             <div className="mb-12 md:mb-0 md:w-8/12 lg:w-5/12 xl:w-5/12 ">
               <h3 className="text-center text-[#151515] lg:text-[40px] md:text-[32px] text-[28px] font-bold font-inter">

@@ -13,9 +13,9 @@ const SellSummary = () => {
   
 
     const [data, setData] = useState([]); 
-    const [totalIncome, setTotalIncome] = useState(0); 
+    const [totalIncome, setTotalIncome] = useState(0);   
 
-const totalSale = cart.reduce((total, item) => (total + item.cartQuantity
+const totalSale = cart.reduce((total, item) => (total + item.cartQuantity  
   ), 0);
 
 useEffect(() => {

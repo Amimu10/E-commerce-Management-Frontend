@@ -5,10 +5,7 @@ const SalesSummary = () => {
 
   console.log(cart);
 
-  const totalPrice = cart.reduce(
-    (total, item) => total + (item.product_price), 
-    0 
-  );
+  const totalPrice = cart.reduce((total, item) => total + parseInt(item.product_price), 0 );
   console.log("total price", totalPrice);
 
   const totalInvest = cart.reduce((total, item) => {
@@ -26,7 +23,7 @@ const SalesSummary = () => {
 
   console.log("Total Invest:", totalInvest);
 
-  const totalProfit = totalPrice - totalInvest;
+  const totalProfit = parseInt(totalPrice - totalInvest);
   console.log("Total Profit:", totalProfit);
 
   return (
@@ -36,7 +33,7 @@ const SalesSummary = () => {
         <div className="card  bg-primary text-primary-content">
           <div className="card-body">
             <h2 className="card-title">Total Sale</h2>
-            <p>$ {totalPrice}</p>
+            <p>$ {cart.length}</p>
           </div>
         </div>
         <div className="card bg-primary text-primary-content">
@@ -78,7 +75,7 @@ const SalesSummary = () => {
                     $ {item.selling_date}
                   </td>
                   <td className="text-[#737373] text-base font-inter font-normal">
-                  {parseInt(item.product_price - item.production_cost)}
+                  $ {parseInt(item.product_price - item.production_cost)}
                   </td> 
                 </tr>
               ))

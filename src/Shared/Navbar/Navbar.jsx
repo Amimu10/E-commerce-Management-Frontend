@@ -9,12 +9,11 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
-import AdbIcon from "@mui/icons-material/Adb";
 import { NavLink } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import useCart from "../../Hooks/useCart";
 import { FaShoppingCart } from "react-icons/fa"; 
-
+import logo from "../../assets/home/logo.png"; 
 function Navbar() {
   const { user, logOut } = useAuth();
   const [cart] = useCart(); 
@@ -129,17 +128,18 @@ function Navbar() {
       sx={{
         position: "fixed",
         left: 0,
-        right: 0,
+        // right: 0,
         maxWidth: "1152px", 
         margin: "auto",
         zIndex: 1000,
-        backgroundColor: "rgba(0, 0, 0, 0.4)",
-        opacity: 40,
+        // backgroundColor: "rgba(0, 0, 0, 0.4)",
+        backgroundColor: "white", 
+        // opacity: 40,
       }}
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          <img className="w-[120px] "  src={logo} alt="" />
           <Typography
             variant="h6"
             noWrap
@@ -155,7 +155,7 @@ function Navbar() {
               textDecoration: "none",
             }}
           >
-            LOGO
+       
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -165,7 +165,7 @@ function Navbar() {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
+              color="pink"
             >
               <MenuIcon />
             </IconButton>
@@ -190,40 +190,24 @@ function Navbar() {
               <ul className="flex-col gap-5 p-5">{pages}</ul>
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            LOGO
-          </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            <ul className="flex gap-5 p-6">{pages}</ul>
+            <ul className="flex gap-5 p-6 text-pink-700">{pages}</ul>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+              <IconButton className="bg-pink-700" onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                {
+                  name && <p className="text-base font-inter text-semibold mr-6">{user?.displayName}</p>
+                } 
                 {photo ? (
                   <Avatar src={photo} sx={{ width: 32, height: 32 }} />
                 ) : (
                   <Avatar sx={{ width: 32, height: 32 }} />
                 )}
-              </IconButton>
+              </IconButton> 
             </Tooltip>
-            <Menu
+            <Menu 
               sx={{ mt: "45px" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
@@ -239,7 +223,7 @@ function Navbar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              <ul className="p-5">{settings}</ul>
+              <ul className="p-5 font-cinzel text-semibold text-pink-600">{settings}</ul>
             </Menu>
           </Box>
         </Toolbar>

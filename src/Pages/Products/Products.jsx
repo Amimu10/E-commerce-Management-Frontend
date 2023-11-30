@@ -11,7 +11,7 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 
 
 const Products = () => {
-  const [products,, refetch] = useProducts(); 
+  const [products,, refetch] = useProducts();       
   const [shop] = useShop();  
   console.log(shop.name);  
   const {user} = useAuth();  

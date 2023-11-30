@@ -1,10 +1,39 @@
 
 import { RiDeleteBin5Line } from "react-icons/ri";
 import useShop from "../../../Hooks/useShop";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import toast from "react-hot-toast";
 
 const ManageShops = () => { 
-  const [shops] = useShop();  
+  const [shops,, refetch] = useShop();  
   console.log(shops);  
+ const axiosSecure = useAxiosSecure(); 
+
+  const handleDeleteProduct = (item) => { 
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!", 
+      icon: "warning",
+      showCancelButton: true, 
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",  
+    }).then( async(result) => { 
+      if (result.isConfirmed) {  
+          const res = await axiosSecure.delete(`/shops/${item._id}`);    
+          console.log(res.data); 
+          if (res.data.deletedCount > 0) {    
+            console.log(res.data);
+            toast.success("Successfully Deleted!");  
+            refetch();
+          }
+     
+      }
+    });
+  };
+
+
 
   return (
     <div>
@@ -63,7 +92,7 @@ const ManageShops = () => {
                   </td>
                   <td className="mb-4">
                     <button 
-                    // onClick={() => handleDeleteItem(item)} 
+                    onClick={() => handleDeleteProduct(item)} 
                       className="p-2 flex items-center justify-center rounded-md bg-[#B91C1C] text-[25px] text-white"
                     >
                       <RiDeleteBin5Line />

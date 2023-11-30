@@ -1,12 +1,6 @@
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { MdDashboard } from "react-icons/md";
-
-// import SellsCollection from "../../SellsCollection/SellsCollection";
-// import ProductManagement from "./ProductManagement";
-// import { useState } from "react";
 import { Helmet } from "react-helmet-async";
-// import SectionTitle from "../../../../Components/SEctionTitle";
-// import AddProduct from "./AddProduct";
 import { FaHome } from "react-icons/fa";
 import AddProduct from "./AddProduct";
 import ProductManagement from "./ProductManagement";
@@ -15,19 +9,25 @@ import SalesSummary from "./SalesSummary";
 import Subscription from "../Subscription";
 import Payment from "./Payment/Payment";
 import SectionTitle from "../../../../Components/SEctionTitle";
+import SalesCollection from "./SalesCollection";
+import Checkout from "../Checkout";
 
 const ShopManangementDashBoard = () => {
   const location = useLocation(); 
  
   const renderPage = () => {
     if (location.pathname.includes("managementHome")) {          
-      return <SectionTitle/>    
+      return <SectionTitle heading="Sop Manager Dashboard"
+      />    
   }
   else if (location.pathname.includes("productManagement")){
     return <ProductManagement></ProductManagement>
  } 
     else if (location.pathname.includes("addProduct")){ 
        return <AddProduct></AddProduct>    
+  } 
+    else if (location.pathname.includes("salesCollection")){ 
+       return <SalesCollection></SalesCollection>    
   } 
     else if (location.pathname.includes("updateProduct")){    
        return <UpdateProduct></UpdateProduct>
@@ -40,6 +40,9 @@ else if (location.pathname.includes("subscription")){
 }  
 else if (location.pathname.includes("payment")){
    return <Payment></Payment>
+}  
+else if (location.pathname.includes("checkout")){
+   return <Checkout></Checkout>
 }  
   
   };
@@ -71,11 +74,11 @@ else if (location.pathname.includes("payment")){
                 <p className="text-[20px] font-cinzel font-semibold text-white mb-6">Back To Home</p>
               </Link> 
               <li>
-                <Link 
+                <NavLink 
                  
                 to="/dashboard/managementHome">  
                     Management Home 
-                </Link>
+                </NavLink>
               </li>
               <li>
                 <NavLink
@@ -96,13 +99,10 @@ else if (location.pathname.includes("payment")){
               <li>
                 <NavLink
                
-                  to="/dashboard/sellsCollection"
+                  to="/dashboard/salesCollection"
                 >
                   Sales Collection
                 </NavLink>
-              </li>
-              <li>
-                <Link href="#">Check-Out</Link>
               </li>
               <li>
                 <NavLink 

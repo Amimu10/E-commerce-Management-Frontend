@@ -1,4 +1,4 @@
-import { Outlet, createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../Main/MainLayout";
 import Home from "../Pages/Home/Home";
 import Products from "../Pages/Products/Products";
@@ -31,6 +31,8 @@ import CustomerRoute from "../CustomerRoute/CustomerRoute";
 import UserDashBoard from "../Pages/DashBoard/UserDasboard/UserDashboard";
 import UserPayment from "../Pages/DashBoard/UserDasboard/UserPayment/UserPayment";
 import CategoryData from "../Pages/Home/Categories/CategoryData";
+import SalesCollection from "../Pages/DashBoard/ShopManager/ProductManagement/SalesCollection";
+import Checkout from "../Pages/DashBoard/ShopManager/Checkout";
 
 
 
@@ -57,9 +59,9 @@ export const router = createBrowserRouter([
         element: <Products></Products>,
       },
       {
-        path: "/showCategory/:category",     
-        element: <CategoryData></CategoryData>,   
-        loader: ({params}) => fetch(`http://localhost:5000/updateproducts/${params.category}`)                   
+        path: "/showCategory/:category",   
+        element: <CategoryData></CategoryData>,  
+        loader: ({params}) => fetch(`https://inventory-management-server-ashy.vercel.app/updateproducts/${params.category}`)                   
       },
     
       {
@@ -105,17 +107,26 @@ export const router = createBrowserRouter([
         element: <ManagerRoute><AddProduct></AddProduct></ManagerRoute>
       },
       {
-        path: "payment",  
-        element : <PrivateRoute><Payment></Payment></PrivateRoute>  
-     },  
+        path: "salesCollection",  
+        element: <ManagerRoute><SalesCollection></SalesCollection></ManagerRoute> 
+      }, 
       {
-        path: "productManagement",  
-        element: <ManagerRoute><ProductManagement></ProductManagement></ManagerRoute>
-      },
+        path: "checkout/checkoutProduct/:id",   
+        element: <ManagerRoute><Checkout></Checkout></ManagerRoute>,
+        // loader: ({params}) => fetch(`https://inventory-management-server-ashy.vercel.app/checkoutProduct/${params.id}`)  
+      }, 
       {
+        path: "payment",   
+        element : <PrivateRoute><Payment></Payment></PrivateRoute>   
+     },   
+      {
+        path: "productManagement",          
+        element: <ManagerRoute><ProductManagement></ProductManagement></ManagerRoute> 
+      }, 
+      { 
         path: "updateProduct/itemUpdate/:id",      
         element: <ManagerRoute><UpdateProduct></UpdateProduct></ManagerRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`)  
+        loader: ({params}) => fetch(`https://inventory-management-server-ashy.vercel.app/products/${params.id}`)  
       },
       {
         path: "sellsCollection",  

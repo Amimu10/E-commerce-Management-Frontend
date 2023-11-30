@@ -1,24 +1,24 @@
 
 import { RiDeleteBin5Line } from "react-icons/ri";
-// import UseMenu from "../../../Hooks/UseMenu";
 import { FaEdit } from "react-icons/fa";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
-// import useAxiosSecure from "../../../Hooks/useAxiosSecure"; 
 import { Link } from "react-router-dom";
-import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import useProducts from "../../../../Hooks/useProducts";
-// import useCart from "../../../../Hooks/useCart";
-// import useAxiosSecure from "../../../Hooks/UseAxiosSecure";
+import useAxiosSecure from "../../../../Hooks/UseAxiosSecure"; 
+import useCart from "../../../../Hooks/useCart";
 
 const ProductManagement = () => { 
-//   const [menu, , refetch] = UseMenu();  
- const [products, sellCount, refetch] = useProducts();
-  console.log(products);  
-  const axiosSecure = useAxiosSecure();  
-  // console.log(axiosSecure); 
-  // const [carts] = useCart(); 
- 
+ const [products,  refetch] = useProducts();   
+  console.log(products);   
+const [cart] = useCart(); 
+console.log(cart);
+// const totalSale = cart.length; 
+
+  const axiosSecure = useAxiosSecure();   
+//  const totalSale = products.reduce((total, item) => (total + item._id.length), 0); 
+// const totalIdLength = products.reduce((total, item) => total + item._id.length, 0);
+
   // console.log(carts);
   const handleDeleteProduct = (item) => { 
     Swal.fire({
@@ -64,9 +64,9 @@ const ProductManagement = () => {
             className="bg-[#D1A054] text-white mb-4"
             style={{ borderRadius: "15px 15px 0px 0px" }}
           >
-            <tr>
-              <th></th>
-              <th>PRODUCT IMAGE</th>
+            <tr> 
+              <th></th>  
+              <th>PRODUCT IMAGE</th>   
               <th>PRODUCT NAME</th> 
               <th>PRODUCT QUANTITY</th> 
               <th>SALE COUNT</th>
@@ -75,16 +75,16 @@ const ProductManagement = () => {
             </tr>
           </thead> 
           <tbody>
-            {products.length > 0 ? (
+            {products.length > 0  && cart.length? (
               products.map((item, index) => ( 
                 <tr key={item._id}> 
                   <th>{index + 1}</th>
                   <td>
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-3"> 
                       <div className="avatar">
-                        <div className="mask mask-squircle w-[75px]">
-                          <img 
-                            src={item.product_image} 
+                        <div className="mask mask-squircle w-[75px]"> 
+                          <img  
+                            src={item.product_image}   
                             alt="Avatar Tailwind CSS Component"
                           />
                         </div>
@@ -98,7 +98,9 @@ const ProductManagement = () => {
                     {item.product_quantity} 
                   </td>
                   <td className="text-[#737373] text-base font-inter font-normal">
-                    $ {sellCount} 
+                    {
+                      cart? cart.length : 0      
+                    }
                   </td> 
                   <td className="mb-4">   
                    <Link to={`/dashboard/updateProduct/itemUpdate/${item._id}`}>  

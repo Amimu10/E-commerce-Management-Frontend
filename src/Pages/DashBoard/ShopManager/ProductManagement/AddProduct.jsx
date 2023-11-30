@@ -9,6 +9,7 @@ import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import SectionTitle from "../../../../Components/SEctionTitle";
 // import useAuth from "../../../../Hooks/useAuth";
 import { useState } from "react";
+import useShop from "../../../../Hooks/useShop";
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`; 
 
@@ -18,7 +19,8 @@ const AddProduct = () => {
     // const { user } = useAuth(); 
     const [productCount, setProductCount] = useState(0);
     const productLimit = 3;
-   
+   const [shop] = useShop();
+
     const onSubmit = async (data) => {
         console.log(data); 
     
@@ -32,6 +34,7 @@ const AddProduct = () => {
          if(res.data.success){
             // now send the menu item to the server with the image url
              const productItem = {    
+                 shop_name: data.shop_name, 
                  product_name: data.name,          
                  product_price: data.price,
                  product_image: res.data.data.display_url, 
@@ -65,17 +68,29 @@ const AddProduct = () => {
     return (
          <div className="mt-32"> 
            <Helmet>
-            <title>Tech-Buddy | Create Shop</title>  
+            <title>Tech-Buddy | Add Product</title>  
             </Helmet>
             <SectionTitle
-             heading="Create Shop"
-             subHeading="Create a new shop"
+             heading="Add Product" 
+             subHeading=""
             
             >
                  
             </SectionTitle>
           
           <form onSubmit={handleSubmit(onSubmit)}> 
+          <div className="form-control  w-full ">
+            <label className="label">
+              <span className="label-text">Shop Name</span>               
+            </label>      
+            <input 
+            {...register("shop_name", { required: true})} 
+            required 
+              type="text"
+              placeholder="Shop Name*" 
+              className="input input-bordered w-full"
+            />
+          </div> 
           <div className="flex lg:flex-row flex-col gap-4">
           <div className="form-control  w-full ">
             <label className="label">

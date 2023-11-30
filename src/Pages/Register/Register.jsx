@@ -9,6 +9,8 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 import Lottie from "lottie-react"; 
 import loginamimation from "../../../public/login.json"; 
+import AOS from "aos"; 
+AOS.init(); 
 
 const Register = () => {
   const { createUser, updateUserProfile } = useAuth();
@@ -61,7 +63,7 @@ const Register = () => {
         <title>Tech-Buddy | Register</title> 
       </Helmet>
       <section className=" h-min">
-        <div className=" w-full p-12">
+        <div data-aos="zoom-in-up" className=" w-full p-12">
           <div
             className="flex lg:flex-row flex-col items-center justify-center lg:justify-between max-w-[1200px] mx-auto lg:px-8 px-6 py-8"
             style={{ boxShadow: "10px 10px 10px 10px rgba(0, 0, 0, 0.25)" }}

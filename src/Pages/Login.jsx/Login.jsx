@@ -5,25 +5,21 @@ import { FaHome } from "react-icons/fa";
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
-  // LoadCanvasTemplateNoReload,
   validateCaptcha,
 } from "react-simple-captcha";
-// import { createContext, useEffect, useState } from "react";
-// import { AuthContext } from "../../Providers/AuthProvider";
+
 import { Helmet } from "react-helmet-async";
 import { toast } from "react-hot-toast";
 import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
-// import useAuth from "../../Hooks/useAuth";
-// import { AuthContext } from "../../Provider/AuthProvider";
 import useAuth from "../../Hooks/useAuth";
 import { useEffect, useState } from "react";
-// import useAuth from "../../Hooks/useAuth";
 import Lottie from "lottie-react"; 
 import loginamimation from "../../../public/login.json"; 
+import AOS from "aos"; 
+AOS.init(); 
 
 const Login = () => {
   const { signInUser } = useAuth(); 
-  // const captchaRef = useRef(null);
   const [disabled, setDisabled] = useState(true);
   const navigate = useNavigate(); 
   const location = useLocation(); 
@@ -68,8 +64,8 @@ const from = location.state?.form?.pathname || "/";
         <title>Tech Buddy | Login</title>
       </Helmet>
 
-      <section className=" h-min">
-        <div className=" w-full p-12">
+      <section className=" h-min"> 
+        <div data-aos="zoom-in-up" className=" w-full p-12">  
           <div
             className="flex lg:flex-row flex-col items-center justify-center lg:justify-between max-w-[1200px] mx-auto lg:px-8 px-6 py-8"
             style={{ boxShadow: "10px 10px 10px 10px rgba(0, 0, 0, 0.25)" }}

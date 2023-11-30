@@ -8,7 +8,8 @@ import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 import useShop from "../../Hooks/useShop";
 import 'sweetalert2/dist/sweetalert2.min.css';
-
+import AOS from "aos"; 
+AOS.init(); 
 
 const Products = () => {
   const [products,, refetch] = useProducts();       
@@ -80,10 +81,10 @@ const handleAdToCart = (product) => {
 
 
   return (
-    <div>
-      <div className="text-center mt-16 mb-8">
+    <div data-aos="fade-right">
+      <div className="text-center mt-20 mb-8">
         <h2 className="text-3xl font-semibold font-inter">
-          Discover Our Latest Products
+          Discover Our Latest Products 
         </h2>
         <p className="text-base font-inter mt-3">
           Explore a curated collection of cutting-edge tech products at

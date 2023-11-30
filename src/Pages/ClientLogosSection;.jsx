@@ -1,4 +1,7 @@
 
+import AOS from "aos"; 
+AOS.init(); 
+
 const ClientLogosSection = () => {
   const clientLogos = [
     { id: 1, name: 'Apple', logo: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg' },
@@ -9,8 +12,8 @@ const ClientLogosSection = () => {
   ];
 
   return (
-    <section className="client-logos-section bg-white py-16">
-      <div className="container mx-auto">
+    <section  className="client-logos-section bg-white py-16">
+      <div data-aos="flip-right" className="container mx-auto">
         <h2 className="text-3xl font-semibold text-center mb-8">Our Valued Partnerships</h2>
 
         <div className="flex flex-wrap justify-center items-center">

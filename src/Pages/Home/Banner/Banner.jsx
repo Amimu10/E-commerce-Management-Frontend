@@ -52,15 +52,15 @@ const Banner = () => {
 
   return (
     <Carousel className="mt-[72px]">
-   <div style={containerStyle}>
-        <img src={img1} alt="slide-1" style={imageStyle} />
-        <div style={overlayStyle}>
-        <h2 style={headingStyle}>Discover a World of Tech Innovations</h2>
+   <div className="" style={containerStyle}>
+        <img src={img1} alt="slide-1" style={imageStyle} /> 
+        <div style={overlayStyle}> 
+        <h2 className="lg:text-5xl mb-2 md:text-3xl text-lg">Discover a World of Tech Innovations</h2>
           <p style={textStyle}>
             Explore a curated selection of high-quality products that cater to
-            your needs and desires.
+            your needs and desires.  
           </p>
-          <Link to="">
+          <Link to="products"> 
           <button className="w-full md:w-auto text-base hover:bg-secondary p-2 rounded-md">
            Browse Products
         </button>

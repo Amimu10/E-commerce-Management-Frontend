@@ -6,7 +6,8 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { Helmet } from "react-helmet-async";
 import SectionTitle from "../../Components/SEctionTitle";
 import useAxiosSecure from "../../Hooks/UseAxiosSecure";
-// import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import AOS from "aos"; 
+AOS.init(); 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`; 
 
@@ -51,7 +52,7 @@ const CreateShop = () => {
 
       
     return (
-         <div className="mt-32"> 
+         <div d data-aos="zoom-in-up" className="mt-32"> 
            <Helmet>
             <title>Tech-Buddy | Create Shop</title>  
             </Helmet>

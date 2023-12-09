@@ -28,3 +28,16 @@ Here This ProjectFeatures:
 
    8. Blog Section:
         Include a dedicated blog section to share insightful content related to technology, including reviews, industry news, and user guides.
+      
+## Uses Tech:
+
+- **Client-side Technologies:**
+  - React for building dynamic user interfaces.
+  - Tailwind CSS for modern and responsive styling.
+
+- **Server-side Technologies:**
+  - MongoDB for efficient storage and retrieval of user and product data.
+  - Express and Node.js for building a robust and scalable server.
+
+- **Payment Method:**
+  - Stripe.js for secure and seamless payment processing.
